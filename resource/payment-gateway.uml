@@ -1,0 +1,109 @@
++----------------------+
+|      PaymentType     |
+|----------------------|
+|  CARD               |
+|  UPI                |
+|  NET_BANKING        |
++----------------------+
+
+         |
+         v
++----------------------+
+|       User          |
+|----------------------|
+| - userId: String    |
+| - name: String      |
+| - balance: double   |
+|----------------------|
+| + sendMoney()       |
+| + receiveMoney()    |
+| + getName()         |
++----------------------+
+
+         |
+         v
++-------------------------+
+|   PaymentDetails       |
+|-------------------------|
+| - password: String      |
+|-------------------------|
+| + authenticate()        |
++-------------------------+
+         |
+         |---------------------|
+         |                     |
+         v                     v
++-------------------------+    +----------------------+
+|  CardPaymentDetails    |    |  UpiPaymentDetails   |
+|-------------------------|    |----------------------|
+| - cardNo: String        |    | - upiId: String     |
+| - expiry: String        |    |----------------------|
+| - cvv: String           |    | + getUpiId()        |
+|-------------------------|    +----------------------+
+| + getCardNo()           |
+| + getExpiry()           |
+| + getCvv()              |
++-------------------------+
+         |
+         v
++-----------------------------+
+|  NetBankingPaymentDetails   |
+|-----------------------------|
+| - bankId: String            |
+|-----------------------------|
+| + getBankId()               |
++-----------------------------+
+
+         |
+         v
++-------------------------+
+|   PaymentMethod        |
+|-------------------------|
+| - paymentDetails       |
+|-------------------------|
+| + processPayment()     |
+| # pay()               |
++-------------------------+
+         |
+         |---------------------|
+         |                     |
+         v                     v
++----------------------+   +--------------------+
+|   CardPayment       |   |   UpiPayment       |
+|----------------------|   |--------------------|
+| + pay()             |   | + pay()            |
++----------------------+   +--------------------+
+         |
+         v
++-----------------------------+
+|    NetBankingPayment        |
+|-----------------------------|
+| + pay()                     |
++-----------------------------+
+
+         |
+         v
++-----------------------------+
+|     PaymentFactory          |
+|-----------------------------|
+| + getPaymentMethod()        |
++-----------------------------+
+
+         |
+         v
++-----------------------------+
+|     PaymentGateway          |
+|-----------------------------|
+| - transactions: List<String>|
+|-----------------------------|
+| + processPayment()          |
++-----------------------------+
+
+
+### Explanation:
+1. **User**: Represents both merchants and individual users who can send/receive money.
+2. **Payment Gateway**: Handles transaction processing, validation, and refunds.
+3. **Payment Processor**: Acts as an intermediary between the payment gateway and banks.
+4. **Payment Method (Abstract Class)**: Defines a common interface for different payment methods.
+5. **Card, UPI, Net Banking**: Concrete implementations of the `Payment Method` class.
+6. **Bank/Card Network**: Final authority that authorizes and settles transactions.
