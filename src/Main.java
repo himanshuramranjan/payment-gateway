@@ -3,7 +3,7 @@ import model.User;
 import model.factory.PaymentFactory;
 import model.payment.PaymentDetails;
 import model.payment.UpiPaymentDetails;
-import model.strategy.PaymentMethod;
+import service.strategy.PaymentMethod;
 import service.PaymentGateway;
 
 public class Main {
