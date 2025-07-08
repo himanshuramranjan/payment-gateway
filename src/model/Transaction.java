@@ -1,8 +1,7 @@
 package model;
 
 import enums.TransactionStatus;
-import model.User;
-import model.strategy.PaymentMethod;
+import service.strategy.PaymentMethod;
 
 public class Transaction {
     private final User sender;

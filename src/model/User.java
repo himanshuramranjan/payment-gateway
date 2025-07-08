@@ -1,6 +1,6 @@
 package model;
 
-import model.strategy.PaymentMethod;
+import service.strategy.PaymentMethod;
 
 public class User {
     private final String userId;
@@ -14,19 +14,15 @@ public class User {
     }
 
     public synchronized boolean sendMoney(User recipient, double amount, PaymentMethod paymentMethod, String credential) {
-        if (!paymentMethod.processPayment(amount, credential)) {
-            System.out.println("Transaction failed.");
+        if (this.balance >= amount || !paymentMethod.authenticatePayment(amount, credential)) {
+            System.out.println("Transaction failed due to Insufficient balance or some internal issue !!!");
             return false;
         }
 
-        if (this.balance >= amount) {
-            this.balance -= amount;
-            recipient.receiveMoney(amount);
-            System.out.println(name + " sent " + amount + " to " + recipient.getName());
-            return true;
-        }
-        System.out.println(name + " has insufficient balance for this transaction.");
-        return false;
+        this.balance -= amount;
+        recipient.receiveMoney(amount);
+        System.out.println(name + " sent " + amount + " to " + recipient.getName());
+        return true;
     }
 
     public synchronized void receiveMoney(double amount) {
