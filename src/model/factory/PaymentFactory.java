@@ -1,9 +1,7 @@
 package model.factory;
 
 import enums.PaymentType;
-import model.payment.CardPaymentDetails;
 import model.payment.PaymentDetails;
-import model.payment.UpiPaymentDetails;
 import model.strategy.CardPayment;
 import model.strategy.NetBankingPayment;
 import model.strategy.PaymentMethod;
