@@ -3,7 +3,7 @@ package service;
 import enums.TransactionStatus;
 import model.Transaction;
 import model.User;
-import model.strategy.PaymentMethod;
+import service.strategy.PaymentMethod;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
