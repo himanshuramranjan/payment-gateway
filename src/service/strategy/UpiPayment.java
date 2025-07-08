@@ -1,4 +1,4 @@
-package model.strategy;
+package service.strategy;
 
 import model.payment.PaymentDetails;
 
