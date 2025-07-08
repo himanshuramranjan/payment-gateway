@@ -1,0 +1,18 @@
+> Design change or modification
+
+1.> Bank Account class can be defined . User can have multiple bank account details
+and sender receiver should choose the particular bank accounts to perform the transaction.
+
+Refer the design of atm-machine for detailed implementation and reference
+
+
+2.> The current design of PaymentDetails tightly couples authentication logic with a single password-based
+method, which limits flexibility and scalability. It accepts only a plain string credential and performs a
+simple equality check, making it difficult to support other authentication mechanisms like OTP, biometric,
+or multi-factor authentication in the future.
+
+To resolve this, we can decouple the authentication behavior from PaymentDetails by applying the
+Strategy pattern—defining an AuthenticationStrategy interface with different implementations for password,
+OTP, and other methods. PaymentDetails would then delegate authentication to the injected strategy,
+allowing the system to easily extend and support various authentication types without modifying existing code,
+thus adhering to the Open-Closed Principle and improving maintainability.
