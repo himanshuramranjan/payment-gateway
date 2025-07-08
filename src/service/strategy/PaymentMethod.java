@@ -9,12 +9,12 @@ public abstract class PaymentMethod {
         this.paymentDetails = paymentDetails;
     }
 
-    public boolean processPayment(double amount, String password) {
+    public boolean authenticatePayment(double amount, String password) {
         if(this.paymentDetails.authenticate(password)) {
-            return pay(amount);
+            return processPayment(amount);
         }
         return false;
     }
 
-    protected abstract boolean pay(double amount);
+    protected abstract boolean processPayment(double amount);
 }

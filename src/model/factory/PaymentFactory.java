@@ -2,10 +2,10 @@ package model.factory;
 
 import enums.PaymentType;
 import model.payment.PaymentDetails;
-import model.strategy.CardPayment;
-import model.strategy.NetBankingPayment;
-import model.strategy.PaymentMethod;
-import model.strategy.UpiPayment;
+import service.strategy.CardPayment;
+import service.strategy.NetBankingPayment;
+import service.strategy.PaymentMethod;
+import service.strategy.UpiPayment;
 
 public class PaymentFactory {
     public PaymentMethod getPaymentMethod(PaymentType paymentType, PaymentDetails paymentDetails) {

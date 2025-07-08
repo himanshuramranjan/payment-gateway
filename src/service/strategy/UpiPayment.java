@@ -8,7 +8,7 @@ public class UpiPayment extends PaymentMethod {
     }
 
     @Override
-    protected boolean pay(double amount) {
+    protected boolean processPayment(double amount) {
         // can add some custom logic like mpin check
         System.out.println("Processing Upi payment of: " + amount);
         return true;

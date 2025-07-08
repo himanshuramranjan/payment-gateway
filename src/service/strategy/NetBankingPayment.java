@@ -8,7 +8,7 @@ public class NetBankingPayment extends PaymentMethod {
     }
 
     @Override
-    protected boolean pay(double amount) {
+    protected boolean processPayment(double amount) {
         // can add some custom logic like banking password or some validation
         System.out.println("Processing NetBanking payment of: " + amount);
         return true;
