@@ -20,7 +20,6 @@ public class User {
         }
 
         this.balance -= amount;
-        recipient.receiveMoney(amount);
         System.out.println(name + " sent " + amount + " to " + recipient.getName());
         return true;
     }
