@@ -45,6 +45,13 @@ public class Transaction {
     }
 
     public boolean initiatePayment() {
-        return this.sender.sendMoney(receiver, amount, method, credential);
+        if(this.sender.sendMoney(receiver, amount, method, credential)) {
+            System.out.println("Amount deducted from the sender");
+
+            // maybe we can have a check if this fails then do a rollback
+            receiver.receiveMoney(amount);
+        }
+        System.out.println("Your transaction failed, no deductions made");
+        return false;
     }
 }
