@@ -9,13 +9,13 @@ public abstract class PaymentMethod {
         this.paymentDetails = paymentDetails;
     }
 
-    public boolean authenticatePayment(double amount, String password) {
+    public boolean validatePayment(double amount, String password) {
         if(this.paymentDetails.authenticate(password)) {
-            return processPayment(amount);
+            return validatePayment(amount);
         }
         return false;
     }
 
     // This method can be used for some async delays, bank ack or fraud detection
-    protected abstract boolean processPayment(double amount);
+    protected abstract boolean validatePayment(double amount);
 }

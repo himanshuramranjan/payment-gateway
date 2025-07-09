@@ -8,7 +8,7 @@ public class CardPayment extends PaymentMethod {
     }
 
     @Override
-    protected boolean processPayment(double amount) {
+    protected boolean validatePayment(double amount) {
         // can add some custom logic like otp validation or something
         System.out.println("Processing Card payment of: " + amount);
         return true;
