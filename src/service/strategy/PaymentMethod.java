@@ -16,5 +16,6 @@ public abstract class PaymentMethod {
         return false;
     }
 
+    // This method can be used for some async delays, bank ack or fraud detection
     protected abstract boolean processPayment(double amount);
 }
