@@ -9,7 +9,7 @@ public abstract class PaymentMethod {
         this.paymentDetails = paymentDetails;
     }
 
-    public boolean validatePayment(double amount, String password) {
+    public boolean processPayment(double amount, String password) {
         if(this.paymentDetails.authenticate(password)) {
             return validatePayment(amount);
         }

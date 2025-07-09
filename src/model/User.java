@@ -14,7 +14,7 @@ public class User {
     }
 
     public synchronized boolean sendMoney(User recipient, double amount, PaymentMethod paymentMethod, String credential) {
-        if (this.balance >= amount || !paymentMethod.authenticatePayment(amount, credential)) {
+        if (this.balance >= amount || !paymentMethod.processPayment(amount, credential)) {
             System.out.println("Transaction failed due to Insufficient balance or some internal issue !!!");
             return false;
         }
