@@ -1,16 +1,16 @@
 > Flow of the process
 
-1. PaymentGateway.addNewTransaction(...)
+1. payer.sendMoney(payee, amount, paymentDetails)
      ↓
-2. Transaction (created inside the gateway)
+2. PaymentGateway.createNewTransaction(...)
      ↓
-3. Transaction.initiate()
+3. Transaction (created inside the gateway)
      ↓
-4. payer.sendMoney(payee, amount, paymentDetails)
+4. Transaction.initiate()
      ↓
-5. paymentDetails.authenticate(credentialInput)
+5. paymentMethod.processPayment(sender, amount)
      ↓
-6. authenticationStrategy.authenticate(...)
+6. authenticationStrategy.authenticate(...) and validate(sender, amount)
      ↓
 7. If all good → payer.balance -= amount, payee.balance += amount
 

@@ -1,5 +1,6 @@
 package model;
 
+import service.PaymentGateway;
 import service.strategy.PaymentMethod;
 
 public class User {
@@ -13,13 +14,14 @@ public class User {
         this.balance = balance;
     }
 
-    public synchronized boolean sendMoney(User recipient, double amount, PaymentMethod paymentMethod, String credential) {
-        if (this.balance >= amount || !paymentMethod.processPayment(amount, credential)) {
-            System.out.println("Transaction failed due to Insufficient balance or some internal issue !!!");
+    public boolean sendMoney(User recipient, double amount, PaymentMethod paymentMethod) {
+        boolean isMoneySent = PaymentGateway.getInstance().createNewTransaction(this, recipient, amount, paymentMethod);
+
+        if (!isMoneySent) {
+            System.out.println("Transaction failed due to some issue !!!");
             return false;
         }
 
-        this.balance -= amount;
         System.out.println(name + " sent " + amount + " to " + recipient.getName());
         return true;
     }
@@ -29,7 +31,18 @@ public class User {
         System.out.println(name + " received " + amount);
     }
 
+    public synchronized boolean deductMoney(double amount) {
+        this.balance -= amount;
+        System.out.println("Amount deducted from the sender");
+
+        return true;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public double getBalance() {
+        return balance;
     }
 }
