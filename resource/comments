@@ -16,3 +16,5 @@ Strategy pattern—defining an AuthenticationStrategy interface with different i
 OTP, and other methods. PaymentDetails would then delegate authentication to the injected strategy,
 allowing the system to easily extend and support various authentication types without modifying existing code,
 thus adhering to the Open-Closed Principle and improving maintainability.
+
+3.> Queue is concurrent Q and thats why we dont need a sync bock for processing the trasnactions
