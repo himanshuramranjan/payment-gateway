@@ -1,5 +1,6 @@
 package service.strategy;
 
+import model.User;
 import model.payment.PaymentDetails;
 
 public class CardPayment extends PaymentMethod {
@@ -8,9 +9,9 @@ public class CardPayment extends PaymentMethod {
     }
 
     @Override
-    protected boolean validatePayment(double amount) {
+    protected boolean validatePayment(User sender, double amount) {
         // can add some custom logic like otp validation or something
         System.out.println("Processing Card payment of: " + amount);
-        return true;
+        return sender.getBalance() >= amount;
     }
 }

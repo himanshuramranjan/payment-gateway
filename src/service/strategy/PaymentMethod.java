@@ -1,5 +1,6 @@
 package service.strategy;
 
+import model.User;
 import model.payment.PaymentDetails;
 
 public abstract class PaymentMethod {
@@ -9,13 +10,13 @@ public abstract class PaymentMethod {
         this.paymentDetails = paymentDetails;
     }
 
-    public boolean processPayment(double amount, String password) {
-        if(this.paymentDetails.authenticate(password)) {
-            return validatePayment(amount);
+    public boolean processPayment(User sender, double amount) {
+        if(this.paymentDetails.authenticate()) {
+            return validatePayment(sender, amount);
         }
         return false;
     }
 
     // This method can be used for some async delays, bank ack or fraud detection
-    protected abstract boolean validatePayment(double amount);
+    protected abstract boolean validatePayment(User sender, double amount);
 }

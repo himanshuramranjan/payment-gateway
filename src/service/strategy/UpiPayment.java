@@ -1,5 +1,6 @@
 package service.strategy;
 
+import model.User;
 import model.payment.PaymentDetails;
 
 public class UpiPayment extends PaymentMethod {
@@ -8,9 +9,9 @@ public class UpiPayment extends PaymentMethod {
     }
 
     @Override
-    protected boolean validatePayment(double amount) {
+    protected boolean validatePayment(User sender, double amount) {
         // can add some custom logic like mpin check
         System.out.println("Processing Upi payment of: " + amount);
-        return true;
+        return sender.getBalance() >= amount;
     }
 }
