@@ -1,20 +1,3 @@
-> Flow of the process
-
-1. payer.sendMoney(payee, amount, paymentDetails)
-     ↓
-2. PaymentGateway.createNewTransaction(...)
-     ↓
-3. Transaction (created inside the gateway)
-     ↓
-4. Transaction.initiate()
-     ↓
-5. paymentMethod.processPayment(sender, amount)
-     ↓
-6. authenticationStrategy.authenticate(...) and validate(sender, amount)
-     ↓
-7. If all good → payer.balance -= amount, payee.balance += amount
-
-
 > Design change or modification
 
 1.> Bank Account class can be defined . User can have multiple bank account details
