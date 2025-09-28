@@ -22,12 +22,12 @@ public class PaymentGateway {
         return PaymentGatewayHelper.INSTANCE;
     }
 
-    public synchronized boolean createNewTransaction(User sender, User receiver, double amount, PaymentMethod method) {
+    public boolean createNewTransaction(User sender, User receiver, double amount, PaymentMethod method) {
         this.transactions.add(new Transaction(sender, receiver, amount, method));
         return processTransaction();
     }
 
-    private synchronized boolean processTransaction() {
+    private boolean processTransaction() {
         int retryAttempt = 3; // can be saved in Config
         Transaction transaction = transactions.poll();
 
