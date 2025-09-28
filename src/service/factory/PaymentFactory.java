@@ -1,8 +1,7 @@
-package model.factory;
+package service.factory;
 
 import enums.PaymentType;
 import model.payment.PaymentDetails;
-import service.PaymentGateway;
 import service.strategy.CardPayment;
 import service.strategy.NetBankingPayment;
 import service.strategy.PaymentMethod;
