@@ -25,4 +25,9 @@ public class CardPaymentDetails extends PaymentDetails {
     public LocalDate getExpiryDate() {
         return expiryDate;
     }
+
+    @Override
+    public boolean authenticate() {
+        return true;
+    }
 }

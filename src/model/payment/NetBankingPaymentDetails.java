@@ -11,4 +11,9 @@ public class NetBankingPaymentDetails extends PaymentDetails {
     public String getBankingId() {
         return bankingId;
     }
+
+    @Override
+    public boolean authenticate() {
+        return true;
+    }
 }

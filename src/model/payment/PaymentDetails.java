@@ -7,7 +7,7 @@ public abstract class PaymentDetails {
         this.password = password;
     }
 
-    public boolean authenticate(String credential) {
-        return this.password.equals(credential);
-    }
+    // details can authenticate based on saved encrypted password and the password provided
+    // post fetching the details based on id (or other info)
+    public abstract boolean authenticate();
 }

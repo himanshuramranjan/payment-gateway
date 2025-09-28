@@ -11,4 +11,9 @@ public class UpiPaymentDetails extends PaymentDetails {
     public String getUpiId() {
         return upiId;
     }
+
+    @Override
+    public boolean authenticate() {
+        return true;
+    }
 }
